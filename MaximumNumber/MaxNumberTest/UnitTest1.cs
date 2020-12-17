@@ -7,75 +7,69 @@ namespace MaxNumberTest
     public class UnitTest1
     {
         /// <summary>
-        /// TC1.1 When Three integers are given to the method and largest number among all numbers is at position 1st, this test case should pass
-        /// </summary>
-        /// <param name="firstValue">firstValue will be maximum of all three integer values</param>
-        [TestMethod]
-        [DataRow(643, 353, 532)]
-        public void GivenThreeIntegersWhenMaxIntegerAtPositionOneShouldReturnThatValue(int firstValue, int secondValue, int thirdValue)
-        {
-            int expectedResult = firstValue;
-            int result = MaximumNumbers.MaxIntNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        /// <summary>
-        /// TC1.2 When Three integers are given to the method and largest number among all numbers is at position 2nd, this test case should pass
+        /// Check MAximum Number and return the first number is maximum
         /// </summary>
         [TestMethod]
-        [DataRow(423, 4453, 532)]
-        public void GivenThreeIntegersWhenMaxIntegerAtPositionTwoShouldReturnThatValue(int firstValue, int secondValue, int thirdValue)
+        public void CheckFirstMaximumNumber_WhenGreaterNo_FirstPosition()
         {
-            int expectedResult = secondValue;
-            int result = MaximumNumbers.MaxIntNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
+            int max = 22;
+            int Result = MaximumNumbers<int>.MaxNumber(22, 11, 10);
+            Assert.AreEqual(max, Result);
         }
 
         /// <summary>
-        /// TC1.3 When Three integers are given to the method and largest number among all numbers is at position 3rd, this test case should pass
+        /// Check MAximum Number and return the Second number is maximum
         /// </summary>
         [TestMethod]
-        [DataRow(233, 553, 932)]
-        public void GivenThreeIntegersWhenMaxIntegerAtPositionThreeShouldReturnThatValue(int firstValue, int secondValue, int thirdValue)
+        public void CheckSecondMaximumNumber_WhenGreaterNo_SecondNumber()
         {
-            int expectedResult = thirdValue;
-            int result = MaximumNumbers.MaxIntNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
+            int max = 24;
+            int Result = MaximumNumbers<int>.MaxNumber(22, 24, 10);
+            Assert.AreEqual(max, Result);
         }
 
         /// <summary>
-        /// TC1.1 here we find max float number in between given three float number
-        /// <summary/>
+        /// Check MAximum Number and return the Third number is maximum
+        /// </summary>
         [TestMethod]
-        [DataRow(66.3f, 5.3f, 4.2f)]
-        public void GivenThreeFloatWhenMaxFloatAtPositionOneShouldReturnThatValue(float firstValue, float secondValue, float thirdValue)
+        public void CheckThirMaximumNumber_WhenGreaterNo_ThirdNumber()
         {
-            float expectedResult = firstValue;
-            float result = MaximumNumbers.MaxFloatNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
-        }
-        /// <summary>
-        /// TC1.2 here we find max float number in between given three float number
-        /// <summary/>
-        [TestMethod]
-        [DataRow(33.2f, 445.3f, 5.22f)]
-        public void GivenThreeFloatWhenMaxFloatAtPositionTwoShouldReturnThatValue(float firstValue, float secondValue, float thirdValue)
-        {
-            float expectedResult = secondValue;
-            float result = MaximumNumbers.MaxFloatNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
+            int max = 28;
+            int Result = MaximumNumbers<int>.MaxNumber(22, 24, 28);
+            Assert.AreEqual(max, Result);
         }
 
         /// <summary>
-        /// TC1.3 here we find max float number in between given three float number
-        /// <summary/>
+        /// Check Maximum String and Return Peach
+        /// </summary>
         [TestMethod]
-        [DataRow(63.3f, 6.53f, 93.2f)]
-        public void GivenThreeFloatWhenMaxFloatAtPositionThreeShouldReturnThatValue(float firstValue, float secondValue, float thirdValue)
+        public void CheckFirstString_WhenGreater_ReturnPeach()
         {
-            float expectedResult = thirdValue;
-            float result = MaximumNumbers.MaxFloatNumber(firstValue, secondValue, thirdValue);
-            Assert.AreEqual(expectedResult, result);
+            string max = "Strawberry";
+            string Result = MaximumNumbers<string>.MaxNumber("Strawberry", "Apple", "Peach");
+            Assert.AreEqual(max, Result);
+        }
+
+        /// <summary>
+        /// Check MAximum String and Return Strawberry
+        /// </summary>
+        [TestMethod]
+        public void CheckSecondString_WhenGreater_RetrunStrawberry()
+        {
+            string max = "Strawberry";
+            string Result = MaximumNumbers<string>.MaxNumber("Apple", "Strawberry", "Peach");
+            Assert.AreEqual(max, Result);
+        }
+
+        /// <summary>
+        /// Check Maximum Sting And Return Peach
+        /// </summary>
+        [TestMethod]
+        public void CheckThirdString_WhenGreater_RetrunPeach()
+        {
+            string max = "Peach";
+            string Result = MaximumNumbers<string>.MaxNumber("Apple", "Banana", "Peach");
+            Assert.AreEqual(max, Result);
         }
     }
 }

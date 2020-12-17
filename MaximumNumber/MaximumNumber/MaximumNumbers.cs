@@ -4,62 +4,56 @@ using System.Text;
 
 namespace MaximumNumber
 {
-    public class MaximumNumbers
+    public class MaximumNumbers<T> where T : IComparable
     {
-        /// <summary>
-        /// This method returns largest numbers among all 3 integer numbers 
-        /// </summary>
-        /// <param name="firstValue">firstValue is of integer type</param>
-        /// <param name="secondValue">secondValue is of integer type</param>
-        /// <param name="thirdValue">thirdValue is of integer type</param>
-        /// <returns></returns>
-        public static int MaxIntNumber(int firstValue, int secondValue, int thirdValue)
+        public T[] Number;
+        public MaximumNumbers(T[] Number)
         {
-            if (firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) > 0 ||
-               firstValue.CompareTo(secondValue) >= 0 && firstValue.CompareTo(thirdValue) > 0 ||
-               firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) >= 0)
-            {
-                return firstValue;
-            }
-            if (secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) > 0 ||
-                secondValue.CompareTo(firstValue) >= 0 && secondValue.CompareTo(thirdValue) > 0 ||
-                secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) >= 0)
-            {
-                return secondValue;
-            }
-            if (thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) > 0 ||
-                thirdValue.CompareTo(firstValue) >= 0 && thirdValue.CompareTo(secondValue) > 0 ||
-                thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) >= 0)
-            {
-                return thirdValue;
-            }
-            return firstValue;
+            this.Number = Number;
+
         }
 
-        /// <summary>
-        /// This method returns Maximum number in between 3 float numbers 
-        /// </summary>
-        public static float MaxFloatNumber(float firstValue, float secondValue, float thirdValue)
+        public static T MaxNumber(T firstNumber, T secondNumber, T thirdNumber)
         {
-            if (firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) > 0 ||
-                firstValue.CompareTo(secondValue) >= 0 && firstValue.CompareTo(thirdValue) > 0 ||
-                firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) >= 0)
+            if (firstNumber.CompareTo(secondNumber) > 0 && secondNumber.CompareTo(thirdNumber) > 0)
             {
-                return firstValue;
+                return firstNumber;
             }
-            if (secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) > 0 ||
-                secondValue.CompareTo(firstValue) >= 0 && secondValue.CompareTo(thirdValue) > 0 ||
-                secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) >= 0)
+            if (secondNumber.CompareTo(firstNumber) > 0 && secondNumber.CompareTo(thirdNumber) > 0)
             {
-                return secondValue;
+                Console.Write("this is greater");
+                return secondNumber;
             }
-            if (thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) > 0 ||
-                thirdValue.CompareTo(firstValue) >= 0 && thirdValue.CompareTo(secondValue) > 0 ||
-                thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) >= 0)
+            if (thirdNumber.CompareTo(firstNumber) > 0 && thirdNumber.CompareTo(secondNumber) > 0)
             {
-                return thirdValue;
+                return thirdNumber;
             }
-            return firstValue;
+            throw new Exception("firstNumber,secondNumber,thirdNumber Same");
+        }
+
+        public T[] Sort(T[] Number)
+        {
+            Array.Sort(Number);
+            return Number;
+        }
+
+        public T MaximumValue(params T[] Number)
+        {
+            var SorteNumber = Sort(Number);
+            return SorteNumber[^1];
+        }
+
+        public T MaxMethod()
+        {
+            var MaxValue = MaximumValue(this.Number);
+            return MaxValue;
+        }
+
+        public void PrintValue()
+        {
+            var max = MaximumValue(this.Number);
+            Console.Write(max);
+
         }
     }
 }
